@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>TokuGram</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,20 +12,73 @@
   </head>
 
   <body>
+
     <header>
-    <% if user_signed_in? %>
+    　<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+      <%= link_to "Toku-gram", root_path, class: "navber-brand p-3 text-white" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
+      <ul class="nav navbar-nav navbar-right ml-auto">
+     <% if user_signed_in? %>
+     <li>
+       <%= link_to "マイページ", new_post_path, class: "nav-link" %>
+     </li>
+     <li>
+       <%= link_to "投稿一覧", posts_path, class: "nav-link" %>
+     </li>
+     <li>
+       <%= link_to "会員一覧", users_path, class: "nav-link" %>
+     </li>
+     <li>
+       <%= link_to "いいね", class: "nav-link" %>
+     </li>
+     <li>
+       <%= link_to "検索", class: "nav-link" %>
+     </li>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
       </li>
     <% else %>
       <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
       </li>
       <li>
-        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+      </li>
+      <li>
+        <%= link_to "おおよそ", about_path, class: "nav-link" %>
+      </li>
+      <li>
+        <%= link_to "検索", class: "nav-link" %>
       </li>
     <% end %>
+    </div>
+    </div>
+    </ul>
+    </nav>
   </header>
+
+  <main>
+    <% flash.each do |message_type, message| %>
+     <div class="flash-message <%= message_type %>"><%= message %>
+     </div>
+    <% end %>
     <%= yield %>
+  </main>
+
+  <footer>
+   <div class='container mt-5'>
+    <div class='row'>
+     <div class='mx-auto'>
+      <p>2024 Toku-gram from Meta</p>
+     </div>
+    </div>
+   </div>
+  </footer>
+
   </body>
+
 </html>
