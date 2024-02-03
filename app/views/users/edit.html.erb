@@ -1,2 +1,31 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<br />
+　<h2 class="text-center">Eddting User</h2>
+  <% if @user.errors.any? %>
+  <%= @user.errors.count %>error prohibited this obj from being saved:
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with model: @user, url: user_path(@user.id) do |f| %>
+<br />
+ <h2 class="text-center">Name</h2>
+  <div class="text-center">
+   <%= f.text_field :name %>
+  </div>
+<br />
+ <h2 class="text-center">Image</h2>
+  <div class="text-center">
+   <%= f.file_field :profile_image, accept: "image/*" %>
+  </div>
+<br />
+ <h2 class="text-center">Introduction</h2>
+  <div class="text-center">
+   <%= f.text_area :introduction %>
+  </div>
+<br />
+ <div class="text-center">
+  <%= f.submit 'Update User', class:"btn btn-secondary" %>
+ </div>
+<% end %>

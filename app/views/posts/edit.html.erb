@@ -1,2 +1,40 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<br />
+　<h2 class="text-center">Editting Post</h2>
+　<% if @post.errors.any? %>
+  <%= @post.errors.count %>error prohibited this obj from being saved:
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<br />
+<%= form_with model: @post do |f| %>
+<br />
+ <h2 class="text-center">Title</h2>
+  <div class="text-center">
+   <%= f.text_field :title %>
+  </div>
+<br />
+ <h2 class="text-center">Image</h2>
+  <div class="text-center">
+   <%= f.file_field :profile_image, accept: "image/*" %>
+  </div>
+<br />
+ <h2 class="text-center">Contents</h2>
+  <div class="text-center">
+   <%= f.text_area :body %>
+  </div>
+<br />
+ <div class="text-center">
+  <%= f.submit 'Update Book', class:"btn btn-success" %>
+ </div>
+<% end %>
+<br />
+<div class="text-center">
+ <%= link_to "Show", post_path, class:"btn btn-primary" %>
+</div>
+<br />
+<div class="text-center">
+　<%= link_to "Back", posts_path, class:"btn btn-danger" %>
+</div>
