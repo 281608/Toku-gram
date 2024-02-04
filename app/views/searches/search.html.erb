@@ -1,0 +1,28 @@
+<br />
+<div class="text-center">
+<% if user_signed_in? %>
+  <div class="search_form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word %>
+      <%= f.select :range, options_for_select([['User'], ['Post']]) %>
+      <%= f.select :search, options_for_select([["Perfect","perfect_match"], ["Forward","forward_match"],  ["Backward","backward_match"], ["Partial","partial_match"]]) %>
+      <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+<% end %>
+<br />
+<% if @range == "User" %>
+  <% @records.each do |record| %>
+    <%= image_tag record.get_profile_image(200, 200) %>
+    <%= link_to record.name, user_path(record.id) %>
+    <%= record.introduction %>
+  <% end %>
+<% else %>
+  <% @records.each do |record| %>
+    <%= image_tag record.user.get_profile_image(200, 200) %>
+    <%= link_to record.title, post_path(record.id) %>
+    <%= record.body %>
+  <% end %>
+<% end %>
+</div>
+</div>
