@@ -2,13 +2,15 @@ class SearchesController < ApplicationController
   before_action :authenticate_user!
 
   def search
-    @range = params[:range]
-    @content = params[:word]
-    @method = params[:search]
-   if @range == 'User'
+    @model = params[:model]
+    @content = params[:content]
+    @method = params[:method]
+   if @model == 'User'
       @records = User.search_for(@content, @method)
-   else
+   elsif @content == 'Post'
      @records = Post.search_for(@content, @method)
+   elsif @model == 'tag'
+			@records = Tag.search_posts_for(@content, @method)
    end
   end
 

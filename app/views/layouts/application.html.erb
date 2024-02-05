@@ -38,6 +38,9 @@
      <li>
        <%= link_to "Search", search_path, class: "nav-link" %>
      </li>
+     <li>
+       <%= render partial: "searches/tag_form" %>
+     </li>
       <li>
         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
       </li>

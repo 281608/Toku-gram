@@ -1,4 +1,5 @@
 <br />
+<h2>Search</h2>
 <div class="text-center">
 <% if user_signed_in? %>
   <div class="search_form">
@@ -11,7 +12,7 @@
   </div>
 <% end %>
 <br />
-<% if @range == "User" %>
+<% if @model == "User" %>
   <% @records.each do |record| %>
     <%= image_tag record.get_profile_image(200, 200) %>
     <%= link_to record.name, user_path(record.id) %>
