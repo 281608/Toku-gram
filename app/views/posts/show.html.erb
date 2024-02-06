@@ -11,6 +11,7 @@
  </td>
  <td><%= link_to @post.title, post_path(@post.id) %></td>
  <td><%= @post.body %></td>
+ <td><%= render "goods/btn", post: @post %></td>
   <% if @post.user == current_user %>
  <td><%= link_to "Edit" , edit_post_path(@post.id), class:"btn btn-success" %></td>
  <td>
