@@ -5,6 +5,7 @@ class Post < ApplicationRecord
 
    validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
+  validates :tag, presence: true
 
   def save_tags(savebook_tags)
     # 現在のユーザーの持っているskillを引っ張ってきている

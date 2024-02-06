@@ -11,6 +11,12 @@
 
 <%= form_with model: @post, url: '/posts', method: :post do |f| %>
 <br />
+<h2 class="text-center">Tag</h2>
+  <div class="text-center">
+    <%= f.label "Tag" %>
+    <%= f.text_field :tag_name, class: 'form-control post_tag_name' %>
+  </div>
+<br />
  <h2 class="text-center">Title</h2>
   <div class="text-center">
    <%= f.text_field :title %>

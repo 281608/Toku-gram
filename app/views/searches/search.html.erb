@@ -4,12 +4,18 @@
 <% if user_signed_in? %>
   <div class="search_form">
     <%= form_with url: search_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word %>
-      <%= f.select :range, options_for_select([['User'], ['Post']]) %>
-      <%= f.select :search, options_for_select([["Perfect","perfect_match"], ["Forward","forward_match"],  ["Backward","backward_match"], ["Partial","partial_match"]]) %>
+      <%= f.text_field :content %>
+      <%= f.select :model, options_for_select([['User'], ['Post']]) %>
+      <%= f.select :method, options_for_select([["Perfect","perfect_match"], ["Forward","forward_match"],  ["Backward","backward_match"], ["Partial","partial_match"]]) %>
       <%= f.submit "Search", class: "btn btn-primary" %>
     <% end %>
   </div>
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.hidden_field :model, :value => "tag"  %>
+    <%= f.hidden_field :method, :value => "perfect" %>
+    <%= f.submit 'Tag Search', class:"btn btn-primary" %>
+  <% end %>
 <% end %>
 <br />
 <% if @model == "User" %>
