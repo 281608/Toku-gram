@@ -4,6 +4,11 @@
 <table class='table'>
 <tr>
  <td>
+　　<% if @post.category.present? %>
+　　　　<%=link_to@post.category,tagsearches_search_path(content:@post.category)%>
+　　<% end %>
+ </td>
+ <td>
  <%= link_to(@post.user) do %>
  <%= image_tag @post.user.get_profile_image(100, 100) %><br>
  <%= @post.user.name %>

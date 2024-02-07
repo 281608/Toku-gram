@@ -21,6 +21,11 @@
          <% end %>
        </td>
        <td>
+　　     <% if @post.category.present? %>
+　　　　<%=link_to@post.category,tagsearches_search_path(content:@post.category)%>
+　　    <% end %>
+      </td>
+       <td>
          <%= post.user.name %>
        </td>
        <td><%= link_to post.title, post_path(post.id) %></td>

@@ -6,9 +6,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tag_list = params[:post][:tag_name].split(',')
    if @post.save
-      @post.save_tags(tag_list)
        flash[:notice] = "You have created post successfully."
     redirect_to post_path(@post.id)
    else
@@ -55,7 +53,7 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:title, :body, :rate, :tag)
+    params.require(:post).permit(:title, :body, :category)
   end
 
   def is_matching_login_user

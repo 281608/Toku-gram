@@ -57,6 +57,11 @@
      <div class="flash-message <%= message_type %>"><%= message %>
      </div>
     <% end %>
+<br />
+    <%= render 'searches/search' %>
+    <% if user_signed_in? %>
+　　  <%= render 'tagsearches/tagsearch' %>
+    <% end %>
     <%= yield %>
   </main>
 

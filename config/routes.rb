@@ -2,10 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "homes#top"
   get "/home/about" => "homes#about", as: "about"
+
   resources :users, only: [:index, :show, :edit, :update]
-  resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+
+  resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
   resources :goods, only: [:create, :destroy]
   resources :post_comments, only: [:create, :desroy]
+ end
+
   get "/search" , to: "searches#search"
+  get 'tagsearches/search', to: 'tagsearches#search'
  #For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
