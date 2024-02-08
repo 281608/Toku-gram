@@ -2,21 +2,35 @@
 <h2 class="text-center">Post detail</h2>
 <br />
 <table class='table'>
+ <thead>
+  <tr>
+   <th></th>
+   <th>Tag</th>
+   <th>Title</th>
+   <th>Content</th>
+   <th>Good</th>
+   <th>Comment</th>
+   <th></th>
+   <th></th>
+  </tr>
+ </thead>
 <tr>
  <td>
-　　<% if @post.category.present? %>
-　　　　<%=link_to@post.category,tagsearches_search_path(content:@post.category)%>
-　　<% end %>
- </td>
- <td>
  <%= link_to(@post.user) do %>
- <%= image_tag @post.user.get_profile_image(100, 100) %><br>
+ <%= image_tag @post.user.get_profile_image(200, 200) %><br>
  <%= @post.user.name %>
  <% end %>
+ </td>
+ <td>
+ <% if @post.category.present? %>
+　 <%=link_to@post.category,tagsearches_search_path(content:@post.category)%>
+　<% end %>
  </td>
  <td><%= link_to @post.title, post_path(@post.id) %></td>
  <td><%= @post.body %></td>
  <td><%= render "goods/btn", post: @post %></td>
+ <td>Comments: <%= @post.post_comments.count %></td>
+ <td><% @post = Post.published.order(created_at: :desc).page(params[:page]).per(12) %></td>
   <% if @post.user == current_user %>
  <td><%= link_to "Edit" , edit_post_path(@post.id), class:"btn btn-success" %></td>
  <td>
@@ -25,3 +39,7 @@
  <% end %>
 </tr>
 </table>
+
+
+<%= render "post_comments/index", post: @post %>
+<%= render "post_comments/form", post: @post, post_comment: @post_comment %>

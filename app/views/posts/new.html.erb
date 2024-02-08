@@ -1,4 +1,5 @@
 <br />
+<div class="p-1 mb-5 bg-info text-white">
  <h2 class="text-center">Post</h2>
 <% if @post.errors.any? %>
   <%= @post.errors.count %>error prohibited this obj from being saved:
@@ -8,12 +9,13 @@
     <% end %>
   </ul>
 <% end %>
+</div>
 
 <%= form_with model: @post, url: '/posts', method: :post do |f| %>
 <br />
-  <div class="form-group">
-  <label>Category</label>
-  <%= f.text_field :category,class: 'form-control post_category' %>
+ <h2 class="text-center">Category</h2>
+  <div class="text-center">
+  <%= f.text_field :category %>
   </div>
 <br />
  <h2 class="text-center">Title</h2>
@@ -28,7 +30,7 @@
 <br />
  <h2 class="text-center">Contents</h2>
   <div class="text-center">
-   <%= f.text_area :body %>
+   <%= f.text_area :body, rows:'5', class: "w-50" %>
   </div>
 <br />
   <div class="text-center">
@@ -36,3 +38,21 @@
   </div>
 <% end %>
 
+<br />
+ <div class="btn-group" role="group" id="buttonGroup">
+      <% if @post.persisted? %>
+        <% if @post.draft? %>
+          <%= f.submit 'Save draft', id: 'draftButton', name: 'draft', class: "draft-btn" %>
+          <%= f.submit 'Publish', id: 'publishButton', name: 'published', class: "submit-btn" %>
+        <% elsif @post.unpublished? %>
+          <%= f.submit 'Make it private', id: 'unpublishButton', name: 'unpublished', class: "unpublish-btn" %>
+          <%= f.submit 'Publish', id: 'publishButton', name: 'published', class: "submit-btn" %>
+        <% else %>
+          <%= f.submit 'Make it private', id: 'unpublishButton', name: 'unpublished', class: "unpublish-btn" %>
+          <%= f.submit 'Publish', id: 'publishButton', name: 'published', class: "submit-btn" %>
+        <% end %>
+      <% else %>
+          <%= f.submit 'Save draft', id: 'draftButton', name: 'draft', class: "draft-btn" %>
+          <%= f.submit 'Publish', id: 'postButton', name: 'post', class: "submit-btn" %>
+      <% end %>
+ </div>

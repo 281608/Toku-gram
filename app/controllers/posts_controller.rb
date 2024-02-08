@@ -6,7 +6,19 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    category_list = params[:post][:category_name].split(',')
+   if params[:draft].present?
+      @post.status = :draft
+   else
+      @post.status = :published
+   end
    if @post.save
+    if @post.draft?
+        redirect_to posts_path, notice: 'Your draft has been saved.'
+    else
+        redirect_to post_path(@post.id), notice: 'Your post has been published.'
+    end
+     @post.save_categories(category_list)
        flash[:notice] = "You have created post successfully."
     redirect_to post_path(@post.id)
    else
@@ -36,6 +48,18 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    if params[:draft].present?
+      @post.status = :draft
+      notice_message = "I saved the draft."
+      redirect_path = posts_path
+    else params[:unpublished].present?
+      @post.status = :unpublished
+      notice_message = "I made it private."
+      redirect_path = posts_path
+    end
+    if @post.save
+      redirect_to redirect_path, notice: notice_message
+    end
    if @post.update(post_params)
       flash[:notice] = "You have updated book successfully."
       redirect_to post_path(@post.id)
@@ -53,7 +77,7 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:title, :body, :category)
+    params.require(:post).permit(:title, :body, :category, :status)
   end
 
   def is_matching_login_user

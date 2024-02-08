@@ -11,6 +11,11 @@
 <br />
 <%= form_with model: @post do |f| %>
 <br />
+ <h2 class="text-center">Category</h2>
+  <div class="text-center">
+   <%= f.text_field :category %>
+  </div>
+<br />
  <h2 class="text-center">Title</h2>
   <div class="text-center">
    <%= f.text_field :title %>

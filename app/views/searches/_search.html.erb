@@ -5,7 +5,7 @@
       <%= f.text_field :word %>
       <%= f.select :range, options_for_select([['User'], ['Post']]) %>
       <%= f.select :search, options_for_select([["Perfect","perfect_match"], ["Forward","forward_match"],  ["Backward","backward_match"], ["Partial","partial_match"]]) %>
-      <%= f.submit "Search", class: "btn-sm btn-primary" %>
+      <%= f.submit "Search", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

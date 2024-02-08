@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
   resources :goods, only: [:create, :destroy]
-  resources :post_comments, only: [:create, :desroy]
+  resources :post_comments, only: [:create, :destroy]
  end
 
   get "/search" , to: "searches#search"

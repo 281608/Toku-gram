@@ -58,10 +58,14 @@
      </div>
     <% end %>
 <br />
+   <div class="search_form container">
+    <div class="d-flex mb-3 row mx-auto">
     <%= render 'searches/search' %>
     <% if user_signed_in? %>
 　　  <%= render 'tagsearches/tagsearch' %>
     <% end %>
+    </div>
+   </div>
     <%= yield %>
   </main>
 

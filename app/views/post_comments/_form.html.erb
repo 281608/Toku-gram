@@ -1,4 +1,6 @@
-<%= form_with(model:[post, post_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "Comment here", class: "w-100" %>
-  <%= f.submit "Send", class:"btn btn-success" %>
-<% end %>
+<div class="text-center">
+ <%= form_with(model:[post, post_comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'3', placeholder: "Comment here", class: "w-50" %>
+  <%= f.submit "Send", class:"btn btn-success " %>
+ <% end %>
+</div>

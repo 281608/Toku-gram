@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <% posts.each do |post| %>
+    <% @posts.each do |post| %>
       <tr>
         <td><%= link_to post.user do %>
           <%= image_tag post.user.get_profile_image(50, 50) %>
@@ -25,7 +25,7 @@
           <% end %>
           </td>
         <td class=<%= "good-" + post.id.to_s %> >
-            <%= render "goods/good", post: post %>
+            <%= render "goods/btn", post: post %>
         </td>
         <td><p>Comments:<%= post.post_comments.count %></p></td>
       </tr>
