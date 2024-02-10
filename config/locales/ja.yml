@@ -1,0 +1,11 @@
+ja:
+  enums:
+    post:
+      status:
+        draft: '公開'
+        published: '非公開'
+  time:
+    formats:
+      default: "%Y/%m/%d"
+      short: "%m/%d"
+      time: "%Y/%m/%d %H:%M:%S"

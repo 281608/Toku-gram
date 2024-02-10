@@ -55,13 +55,6 @@ ActiveRecord::Schema.define(version: 2024_02_07_121303) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "post_tags", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "tag_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -69,12 +62,8 @@ ActiveRecord::Schema.define(version: 2024_02_07_121303) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "tag"
+    t.string "category"
   end
 
   create_table "users", force: :cascade do |t|
