@@ -23,7 +23,7 @@
 <br />
  <h2 class="text-center">Image</h2>
   <div class="text-center">
-   <%= f.file_field :profile_image, accept: "image/*" %>
+   <%= f.file_field :image, accept: "image/*" %>
   </div>
 <br />
  <h2 class="text-center">Contents</h2>
@@ -48,10 +48,12 @@
  </div>
 <% end %>
 <br />
-<div class="text-center">
+<div class="d-flex justify-content-center">
+ <div class="text-center">
  <%= link_to "Show", post_path, class:"btn btn-primary" %>
 </div>
 <br />
-<div class="text-center">
+ <div class="text-center">
 　<%= link_to "Back", posts_path, class:"btn btn-danger" %>
+ </div>
 </div>

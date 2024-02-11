@@ -7,7 +7,7 @@ class Post < ApplicationRecord
    has_many :post_comments, dependent: :destroy
 
    validates :title,presence:true
-  validates :body,presence:true,length:{maximum:200}
+  validates :body,presence:true,length:{maximum:500}
   validates :category, presence: true
 
   def gooded_by?(user)

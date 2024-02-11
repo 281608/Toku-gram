@@ -1,40 +1,42 @@
-<div class='col-md-8 offset-md-1'>
+<div class='col-md-12'>
 <br />
 <h2>Posts</h2>
 <br />
 <table class='table table-hover table-inverse'>
   <thead>
    <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th colspan="3"></th>
+      <th></th>
+      <th></th>
+      <th>Name</th>
+      <th>Tag</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Good</th>
+      <th>Comment</th>
+      <th>Status</th>
    </tr>
   </thead>
   <tbody>
     <% @posts.each do |post| %>
     <tr>
-      <td><%= l.post.created_at, format: :default %></td>
+      <td><%= l post.created_at, format: :ymd %></td>
        <td>
-         <%= link_to user_path(post.user.id) do %>
-         <%= image_tag post.user.get_profile_image(80, 80) %>
-         <% end %>
+        <% if post.image.attached? %>
+          <%= image_tag post.image, size: "200x200" %>
+        <% end %>
        </td>
+       <td>
+         <%= post.user.name %></td>
        <td>
 　　     <% if post.category.present? %>
 　　　　  <%=link_to post.category,tagsearches_search_path(content:post.category)%>
 　　    <% end %>
       </td>
-       <td>
-         <%= post.user.name %>
-       </td>
        <td><%= link_to post.title, post_path(post.id) %></td>
      <td><%= post.body %></td>
      <td><%= render "goods/btn", post: post %></td>
-     <td><%= post.status_i18n %></td>
      <td>Comments: <%= post.post_comments.count %></td>
+     <td><%= post.status_i18n %></td>
     </tr>
     <% end %>
   </tbody>

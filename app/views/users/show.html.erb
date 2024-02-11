@@ -34,26 +34,35 @@
 
  </div>
 
-<div class='col-md-8 offset-md-1'>
+<div class='col-md-8'>
 　<h2 class="text-center">Posts</h2>
 　<table class='table table-hover table-inverse'>
   <thead>
   <tr>
   <th></th>
   <th></th>
+  <th>Tag</th>
+  <th>Title</th>
+  <th>Good</th>
   <th></th>
   </tr>
   </thead>
   <tbody>
   <% @posts.each do |post| %>
   <tr>
+  <td><%= l post.created_at, format: :ymd %></td>
   <td>
-     <%= link_to user_path(post.user.id) do %>
-         <%= image_tag post.user.get_profile_image(80, 80) %>
-         <% end %>
+    <% if post.image.attached? %>
+     <%= image_tag post.image, size: "200x200" %>
+    <% end %>
   </td>
-   <td><%= link_to post.title, post_path(post.id) %></td>
-    <td><%= post.body %></td>
+  <td>
+   <% if post.category.present? %>
+    <%=link_to post.category,tagsearches_search_path(content:post.category)%>
+   <% end %>
+  </td>
+  <td><%= link_to post.title, post_path(post.id) %></td>
+  <td><%= render "goods/btn", post: post %></td>
 </tr>
   <% end %>
   </tbody>

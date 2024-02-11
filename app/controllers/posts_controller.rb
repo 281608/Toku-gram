@@ -15,12 +15,14 @@ class PostsController < ApplicationController
   # end
 
    if @post.save
+     flash[:notice] = "You have created post successfully."
   # if @post.draft?
   #       redirect_to dashboard_posts_path, notice: 'Your draft has been saved.'
   # else
-        redirect_to post_path(@post), notice: 'Your post has been published.'
+        redirect_to post_path(@post.id), notice: 'Your post has been published.'
   # end
    else
+     @posts = Post.all
       render :index
    end
 
@@ -48,13 +50,12 @@ class PostsController < ApplicationController
     @user = current_user
     @post = Post.find(params[:id])
 
-    @post.assign_attributes(post_params)
-
-   if @post.save
-      redirect_to redirect_path, notice: notice_message
-   else
+    if @post.update(post_params)
+      flash[:notice] = "You have updated post successfully."
+      redirect_to post_path(@post.id)
+    else
       render :edit
-   end
+    end
   end
 
   def destroy
@@ -66,7 +67,7 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:title, :body, :category, :status)
+    params.require(:post).permit(:title, :body, :category, :status, :image)
   end
 
   def is_matching_login_user

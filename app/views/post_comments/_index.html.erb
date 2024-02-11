@@ -20,6 +20,7 @@
             <%= link_to "Comment_Destroy", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
           <% end %>
         </td>
+        <td><%= l post.created_at, format: :long %></td>
       </tr>
       <% end %>
   </tbody>

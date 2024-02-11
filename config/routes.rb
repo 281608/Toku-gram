@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
 
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-  resources :goods, only: [:create, :destroy]
-  resources :post_comments, only: [:create, :destroy]
- end
+    resource :goods, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
+  end
 
   get "/search" , to: "searches#search"
   get 'tagsearches/search', to: 'tagsearches#search'

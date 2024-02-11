@@ -5,22 +5,21 @@
  <thead>
   <tr>
    <th></th>
+   <th></th>
    <th>Tag</th>
    <th>Title</th>
    <th>Content</th>
    <th>Good</th>
    <th>Comment</th>
    <th>Status</th>
-   <th></th>
   </tr>
  </thead>
  <tbody>
   <tr>
-   <td><%= @post.created_at format: :time %></td>
+   <td><%= l(@post.created_at, format: :long) %></td>
    <td>
-    <%= link_to(@post.user) do %>
-    <%= image_tag @post.user.get_profile_image(200, 200) %><br>
-    <%= @post.user.name %>
+    <% if @post.image.attached? %>
+     <%= image_tag @post.image, size: "200x200" %>
     <% end %>
    </td>
    <td>
