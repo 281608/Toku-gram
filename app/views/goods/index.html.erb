@@ -1,0 +1,38 @@
+<br />
+<h2>Goods</h2>
+ <table class="table">
+   <thead>
+     <tr>
+       <th></th>
+       <th>Name</th>
+       <th></th>
+       <th>Tag</th>
+       <th>Title</th>
+       <th>Content</th>
+       <th>Comment</th>
+       <th>Status</th>
+     </tr>
+   </thead>
+   <tbody>
+     <% @goods.each do |good| %>
+     <tr>
+       <td><%= l good.post.created_at, format: :ymd %></td>
+       <td><%= good.post.user.name %></td>
+       <td>
+        <% if good.post.image.attached? %>
+          <%= image_tag good.post.image, size: "200x200" %>
+        <% end %>
+        </td>
+        <td>
+        <% if good.post.category.present? %>
+　　　　  <%= link_to good.post.category,tagsearches_search_path(content:good.post.category) %>
+　　    <% end %>
+        </td>
+       <td><%= link_to good.post.title, post_path(good.post.id) %></td>
+       <td><%= good.post.body %></td>
+       <td>Comments: <%= good.post.post_comments.count %></td>
+       <td><%= good.post.status_i18n %></td>
+     </tr>
+     <% end %>
+   </tbody>
+ </table>

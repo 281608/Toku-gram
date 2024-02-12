@@ -12,4 +12,10 @@ class GoodsController < ApplicationController
     good.destroy
     redirect_to request.referer
   end
+
+  def index
+    @user = User.find(params[:user_id])
+    @goods = Good.where(user_id: @user.id)
+  end
+
 end

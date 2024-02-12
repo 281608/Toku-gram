@@ -6,8 +6,8 @@
   <thead>
    <tr>
       <th></th>
-      <th></th>
       <th>Name</th>
+      <th></th>
       <th>Tag</th>
       <th>Title</th>
       <th>Content</th>
@@ -20,13 +20,12 @@
     <% @posts.each do |post| %>
     <tr>
       <td><%= l post.created_at, format: :ymd %></td>
+      <td><%= post.user.name %></td>
        <td>
         <% if post.image.attached? %>
           <%= image_tag post.image, size: "200x200" %>
         <% end %>
        </td>
-       <td>
-         <%= post.user.name %></td>
        <td>
 　　     <% if post.category.present? %>
 　　　　  <%=link_to post.category,tagsearches_search_path(content:post.category)%>
