@@ -62,3 +62,5 @@ gem 'rails-i18n'
 gem 'enum_help'
 
 gem 'i18n_generators'
+
+gem 'kaminari','~> 1.2.1'

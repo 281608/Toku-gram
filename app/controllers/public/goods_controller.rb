@@ -1,4 +1,4 @@
-class GoodsController < ApplicationController
+class Public::GoodsController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     good = current_user.goods.new(post_id: post.id)
@@ -16,6 +16,7 @@ class GoodsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @goods = Good.where(user_id: @user.id)
+    @post = Post.page(params[:page])
   end
 
 end
