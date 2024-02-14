@@ -32,7 +32,7 @@
         <td><%= link_to post.title,post, class: "post_#{post.id}" %></td>
         <td><%= post.body %></td>
         <td class=<%= "good-" + post.id.to_s %> >
-            <%= render "goods/btn", post: post %>
+            <%= render "public/goods/btn", post: post %>
         </td>
         <td>Comments:<%= post.post_comments.count %></td>
         <td><%= post.status_i18n %></td>

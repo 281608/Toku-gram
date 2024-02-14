@@ -1,0 +1,26 @@
+<br />
+<h2>Comments</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Comment</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @post_comments.each do |post_comment| %>
+      <tr>
+        <td>
+          <%= link_to user_path(post_comment.user) do %>
+            <%= post_comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= post_comment.comment %></td>
+        <td>
+            <%= link_to "Comment_Destroy", admin_post_comment_path(post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

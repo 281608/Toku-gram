@@ -8,19 +8,10 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = @user.id
 
-  # if params[:draft].present?
-  #     @post.status = :draft
-  # else
-  #     @post.status = :published
-  # end
-
    if @post.save
      flash[:notice] = "You have created post successfully."
-  # if @post.draft?
-  #       redirect_to dashboard_posts_path, notice: 'Your draft has been saved.'
-  # else
-        redirect_to post_path(@post.id), notice: 'Your post has been published.'
-  # end
+     redirect_to post_path(@post.id), notice: 'Your post has been published.'
+
    else
      @posts = Post.all
       render :index

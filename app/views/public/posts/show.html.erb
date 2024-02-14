@@ -29,7 +29,7 @@
    </td>
    <td><%= link_to @post.title, post_path(@post.id) %></td>
    <td><%= @post.body %></td>
-   <td><%= render "goods/btn", post: @post %></td>
+   <td><%= render "public/goods/btn", post: @post %></td>
    <td>Comments: <%= @post.post_comments.count %></td>
    <td><%= @post.status_i18n %></td>
      <% if @post.user == current_user %>
@@ -43,5 +43,5 @@
 </table>
 
 
-<%= render "post_comments/index", post: @post %>
-<%= render "post_comments/form", post: @post, post_comment: @post_comment %>
+<%= render "public/post_comments/index", post: @post %>
+<%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-scope module :public do
+  root to: "public/homes#top"
+
+scope module: :public do
   devise_for :users
-  root to: "homes#top"
   get "/home/about" => "homes#about", as: "about"
   resources :users, only: [:index, :show, :edit, :update] do
     resources :goods, only: [:index]
@@ -22,6 +23,7 @@ end
 namespace :admin do
     get 'dashboards', to: 'dashboards#index'
     resources :users, only: [:destroy]
+    resources :post_comments, only: [:index, :destroy]
   end
 
 
