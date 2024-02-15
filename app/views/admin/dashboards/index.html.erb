@@ -14,7 +14,7 @@
       <td></td>
       <td><%= user.name %></td>
       <td><%= user.email %></td>
-      <td><%= link_to 'Delete', admin_user_path(user), method: :delete, deta: { confirm: 'Do you really want to delete this?' }, class: "btn btn-danger" %></td>
+      <td><%= link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Do you really want to delete this?' }, class: "btn btn-danger" %></td>
     </tr>
     <% end %>
   </tbody>

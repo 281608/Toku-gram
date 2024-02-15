@@ -1,6 +1,7 @@
 <br />
 <h2 class="text-center">Post detail</h2>
 <br />
+<div class='col-md-12'>
 <table class='table'>
  <thead>
   <tr>
@@ -41,7 +42,7 @@
   </tr>
  </tbody>
 </table>
-
+</div>
 
 <%= render "public/post_comments/index", post: @post %>
 <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
