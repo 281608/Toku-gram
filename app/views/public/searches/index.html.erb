@@ -35,7 +35,9 @@
       <tr>
         <td>
           <%= link_to user_path(post.user) do %>
-            <%= image_tag post.user.get_profile_image(100, 100) %>
+          <% if post.image.attached? %>
+          <%= image_tag post.image, size: "200x200" %>
+        <% end %>
           <% end %>
         </td>
         <td><%= link_to post.title , post_path(post.id) %></td>
