@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<script src="https://kit.fontawesome.com/96de0f4082.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -24,29 +24,45 @@
       <ul class="nav navbar-nav navbar-right ml-auto">
      <% if user_signed_in? %>
      <li>
-       <%= link_to "Home", user_path(current_user.id), class: "nav-link" %>
+       <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
+       <i class="fa-solid fa-house"></i> Home
+       <% end %>
      </li>
      <li>
-       <%= link_to "Posts", posts_path, class: "nav-link" %>
+       <%= link_to posts_path, class: "nav-link text-light" do %>
+       <i class="fa-regular fa-image"></i> Posts
+       <% end %>
      </li>
      <li>
-       <%= link_to "Users", users_path, class: "nav-link" %>
+       <%= link_to users_path, class: "nav-link text-light" do %>
+       <i class="fa-regular fa-user"></i> Users
+       <% end %>
      </li>
      <li>
-       <%= link_to "Goods", user_goods_path(current_user.id), class: "nav-link" %>
+       <%= link_to user_goods_path(current_user.id), class: "nav-link text-light" do %>
+       <i class="fa-regular fa-thumbs-up"></i> Goods
+       <% end %>
      </li>
       <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+        <i class="fa-solid fa-arrow-right-from-bracket"></i> Log out
+        <% end %>
       </li>
     <% else %>
       <li>
-        <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+        <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+        <i class="fa-solid fa-user-plus"></i> Sign up
+        <% end %>
       </li>
       <li>
-        <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+        <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Log in
+        <% end %>
       </li>
       <li>
-        <%= link_to "About", about_path, class: "nav-link" %>
+        <%= link_to about_path, class: "nav-link text-light" do %>
+        <i class="fa-regular fa-note-sticky"></i> About
+        <% end %>
       </li>
     <% end %>
     </div>

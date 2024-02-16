@@ -1,9 +1,11 @@
 <% if post.gooded_by?(current_user) %>
   <%= link_to post_goods_path(post), method: :delete do %>
+  <i class="fa-regular fa-thumbs-up" aria-hidden="true" style="color: blue;"></i>
     <%= post.goods.count %> Good
   <% end %>
 <% else %>
   <%= link_to post_goods_path(post), method: :post do %>
+  <i class="fa-regular fa-thumbs-up" aria-hidden="true"></i>
     <%= post.goods.count %> Good
   <% end %>
 <% end %>

@@ -28,7 +28,7 @@
        </td>
        <td>
 　　     <% if post.category.present? %>
-　　　　  <%=link_to post.category,tagsearches_search_path(content:post.category)%>
+　　　　  <%= post.category %>
 　　    <% end %>
       </td>
        <td><%= link_to post.title, post_path(post.id) %></td>

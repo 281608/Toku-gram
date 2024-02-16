@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<script src="https://kit.fontawesome.com/96de0f4082.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -22,13 +22,19 @@
       <ul class="nav navbar-nav navbar-right ml-auto">
   <% if admin_signed_in? %>
     <li>
-      <%= link_to 'Users', admin_dashboards_path, class: "nav-link" %>
+      <%= link_to  admin_dashboards_path, class: "nav-link text-light" do %>
+      <i class="fa-solid fa-users"></i> Users
+      <% end %>
     </li>
     <li>
-     <%= link_to 'Comments', admin_post_comments_path, class: "nav-link" %>
+     <%= link_to admin_post_comments_path, class: "nav-link text-light" do %>
+     <i class="fa-regular fa-comments"></i> Comments
+     <% end %>
     </li>
     <li>
-      <%= link_to 'Log out', destroy_admin_session_path, method: :delete, class: "nav-link" %>
+      <%= link_to  destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
+      <i class="fa-solid fa-arrow-right-from-bracket"></i> Log out
+      <% end %>
     </li>
   <% end %>
 </div>

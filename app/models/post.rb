@@ -6,9 +6,9 @@ class Post < ApplicationRecord
    has_many :goods, dependent: :destroy
    has_many :post_comments, dependent: :destroy
 
-   validates :title,presence:true
+   validates :title,presence:true,length:{maximum:30}
   validates :body,presence:true,length:{maximum:500}
-  validates :category, presence: true
+  validates :category, presence: true,length:{maximum:20}
 
   def gooded_by?(user)
     goods.where(user_id: user.id).exists?
