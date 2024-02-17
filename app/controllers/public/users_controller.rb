@@ -6,11 +6,11 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-   if false
-     @posts = current_user.posts
-  else
-     @posts = @user.posts.where(status:0)
-   end
+    if current_user.id == @user.id
+      @posts = current_user.posts
+    else
+      @posts = @user.posts.where(status:0)
+    end
   end
 
   def edit
